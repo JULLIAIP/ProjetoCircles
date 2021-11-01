@@ -19,10 +19,7 @@ const OverviewFlow = () => {
     content,
     handleInfos,
     handleRemoveInfos,
-    seeActivity,
-    handleRemoveActivitys,
     showAll,
-    circlesInfo,
   } = useCirclesContext();
 
   const [key, setKey] = useState(uuid());
@@ -74,8 +71,7 @@ const OverviewFlow = () => {
           data: [...nodes],
           handleInfos,
           handleRemoveInfos,
-          seeActivity,
-          handleRemoveActivitys,
+
           showAll,
         })
       );
@@ -113,8 +109,6 @@ const OverviewFlow = () => {
             data: newElements,
             handleInfos,
             handleRemoveInfos,
-            seeActivity,
-            handleRemoveActivitys,
           })
         );
         setKey(uuid);
@@ -132,11 +126,10 @@ const OverviewFlow = () => {
       clearTimeout(timerRef.current);
       timerRef.current = null;
       countRef.current = 0;
-      if (element.id !== "modal") {
+      if (element.id !== "modal" && element.id !== "mission") {
         handleDobleClick(element);
       } else {
       }
-
     }
     if (!timerIsPresent) {
       countRef.current = countRef.current + 1;
@@ -144,7 +137,7 @@ const OverviewFlow = () => {
         clearTimeout(timerRef.current);
         timerRef.current = null;
         countRef.current = 0;
-        if (element.id !== "modal") {
+        if (element.id !== "modal" && element.id !== "mission") {
           onElementClick(element);
         } else {
         }

@@ -25,12 +25,11 @@ export function BuildCircles({
   data: content,
   handleInfos,
   handleRemoveInfos,
-  handleRemoveActivitys,
-  seeActivity,
-  handleSeeMission,
+  handleMission,
+  handleRemoveMission,
 }) {
   const tags = [];
-  console.log("see", seeActivity);
+  console.log("elements", content);
 
   content?.forEach((element) => {
     if (element?.nivel_ordem === 1) {
@@ -54,7 +53,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -112,7 +119,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -181,7 +196,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -252,7 +275,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -321,7 +352,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -364,7 +403,15 @@ export function BuildCircles({
           label: (
             <div className="lvl-7">
               <FontAwesomeIcon className="avatar-icon" icon={faUser} />
-              <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+              <button
+                onClick={() =>
+                  handleInfos(
+                    element?.pessoa_objeto_id,
+                    element?.ponto_x,
+                    element.ponto_y
+                  )
+                }
+              >
                 <FontAwesomeIcon icon={faInfo} />
               </button>
 
@@ -423,78 +470,104 @@ export function BuildCircles({
                 )}
               </ImgContainer>
               <WrapperPopover>
-                {seeActivity ? (
-                  <DataContainer color={element.category}>
-                    <div>
-                      <h1>{element.data.name}</h1>
-                      <button>
-                        <FontAwesomeIcon icon={faLinkedinIn} className="in" />
-                      </button>
-                    </div>
-                    <h2 color={element.category}>{element.data.function}</h2>
-
-                    <p>{element.data.texto}</p>
-
-                    <label>
-                      <FontAwesomeIcon icon={faEnvelope} />
-                      {element.data.email}
-                    </label>
-                    <label>
-                      <FontAwesomeIcon icon={faPhoneAlt} />
-                      {element.data.telefone}
-                    </label>
-                    <label>
-                      <FontAwesomeIcon icon={faMobile} />
-                      {element.data.celular}
-                    </label>
-                    <label>
-                      <FontAwesomeIcon icon={faGift} />
-                      {element.data.data_de_nascimento}
-                    </label>
-                    <button className="button" onClick={handleSeeMission}>
-                      Descrição do Cargo
-                    </button>
-                  </DataContainer>
-                ) : (
-                  <DataContainer>
+                <DataContainer color={element.category}>
+                  <div>
                     <h1>{element.data.name}</h1>
                     <button>
                       <FontAwesomeIcon icon={faLinkedinIn} className="in" />
                     </button>
-                    <p>{element.data.descricao}</p>
-                  </DataContainer>
-                )}
+                  </div>
+                  <h2 color={element.category}>{element.data.function}</h2>
+
+                  <p>{element.data.texto}</p>
+
+                  <label>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                    {element.data.email}
+                  </label>
+                  <label>
+                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    {element.data.telefone}
+                  </label>
+                  <label>
+                    <FontAwesomeIcon icon={faMobile} />
+                    {element.data.celular}
+                  </label>
+                  <label>
+                    <FontAwesomeIcon icon={faGift} />
+                    {element.data.data_de_nascimento}
+                  </label>
+                  <button
+                    className="button"
+                    onClick={() =>
+                      handleMission(
+                        element?.id_do_pai,
+                        element?.data.position_x,
+                        element.data.position_y
+                      )
+                    }
+                  >
+                    Descrição do Cargo
+                  </button>
+                </DataContainer>
 
                 <ButtonContainer color={element?.category}>
                   <button className="more-top" onClick={handleRemoveInfos}>
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
 
-                  <button onClick={handleRemoveActivitys}>
+                  <button>
                     <FontAwesomeIcon icon={faBars} />
                   </button>
                 </ButtonContainer>
               </WrapperPopover>
 
-              {seeActivity && (
-                <div>
-                  <ButtonActividades color={element?.category}>
-                    <button>Missão da Área</button>
-                    <button>Unidade</button>
-                    <button>Admissão</button>
-                  </ButtonActividades>
-                </div>
-              )}
+              <div>
+                <ButtonActividades color={element?.category}>
+                  <button>Missão da Área</button>
+                  <button>Unidade</button>
+                  <button>Admissão</button>
+                </ButtonActividades>
+              </div>
             </div>
           ),
         },
         style: element?.style,
         position: { x: element?.position?.x, y: element?.position?.y },
       });
-      return;
     }
-    if (element?.source) {
-      tags.push(element);
+    if (element?.nivel_ordem === "mission") {
+      tags.push({
+        id: element?.id,
+        data: {
+          label: (
+            <div>
+              <WrapperPopover>
+                <DataContainer color={element.category}>
+                  <div>
+                    <h1>{element.data.name}</h1>
+                    <button>
+                      <FontAwesomeIcon icon={faLinkedinIn} className="in" />
+                    </button>
+                  </div>
+                  <h2 color={element.category}>{element.data.function}</h2>
+                  <p>{element.data.descricao}</p>
+                </DataContainer>
+              </WrapperPopover>
+              <ButtonContainer color={element?.category}>
+                <button
+                  className="misison-button"
+                  onClick={handleRemoveMission}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              </ButtonContainer>
+            </div>
+          ),
+        },
+        style: element?.style,
+        position: { x: element?.position?.x, y: element?.position?.y },
+      });
     }
   });
 

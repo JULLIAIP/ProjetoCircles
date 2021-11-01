@@ -16,8 +16,7 @@ const MenuLeft = () => {
     content,
     handleInfos,
     handleRemoveInfos,
-    seeActivity,
-    handleRemoveActivitys,
+
     circlesInfo,
   } = useCirclesContext();
 
@@ -33,19 +32,14 @@ const MenuLeft = () => {
       });
   };
 
-
-   async function filterByNivel(nivel) {
-    const nivelFilter = content?.filter(
-      (item) => item.nivel_ordem <= nivel
-    );
+  async function filterByNivel(nivel) {
+    const nivelFilter = content?.filter((item) => item.nivel_ordem <= nivel);
 
     await setElements(
       BuildCircles({
         data: nivelFilter,
         handleInfos,
         handleRemoveInfos,
-        seeActivity,
-        handleRemoveActivitys,
       })
     );
   }
@@ -56,25 +50,20 @@ const MenuLeft = () => {
     const nameSearched = content.filter((item) =>
       item?.pessoa_descricaolonga?.toUpperCase().includes(text.toUpperCase())
     );
-   
 
     const functionSearched = content?.filter((item) =>
       item?.cargo_descricaolonga?.toUpperCase().includes(text.toUpperCase())
     );
-  
 
     const areaSearched = content?.filter((item) =>
       item?.area_descricaolonga?.toUpperCase().includes(text.toUpperCase())
     );
-    
 
     setElements(
       BuildCircles({
         data: [...nameSearched, ...functionSearched, ...areaSearched],
         handleInfos,
         handleRemoveInfos,
-        seeActivity,
-        handleRemoveActivitys,
       })
     );
   }
@@ -105,8 +94,6 @@ const MenuLeft = () => {
                       data: originalData,
                       handleInfos,
                       handleRemoveInfos,
-                      seeActivity,
-                      handleRemoveActivitys,
                     })
                   )
                 }
