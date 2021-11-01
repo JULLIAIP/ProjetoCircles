@@ -29,7 +29,6 @@ export function BuildCircles({
   handleRemoveMission,
 }) {
   const tags = [];
-  console.log("elements", content);
 
   content?.forEach((element) => {
     if (element?.nivel_ordem === 1) {
@@ -160,19 +159,19 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
-          tags.push({
-            id: `e${element?.pessoa_objeto_id}-${item}`,
-            source: `${element?.pessoa_objeto_id}`,
-            target: `${item}`,
-            type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5" },
-            animated: false,
-            isHidden: false,
-          });
-        });
-      }
+      // if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+      //   element?.objeto_idsuperior.forEach((item) => {
+      //     tags.push({
+      //       id: `e${element?.pessoa_objeto_id}-${item}`,
+      //       source: `${element?.pessoa_objeto_id}`,
+      //       target: `${item}`,
+      //       type: "straight",
+      //       style: { stroke: "#a9b7b7", strokeWidth: "5" },
+      //       animated: false,
+      //       isHidden: false,
+      //     });
+      //   });
+      // }
       return;
     }
     if (element?.nivel_ordem === 3) {
@@ -237,21 +236,19 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
-          // exist &&
-          //   exist.includes(item) &&
-          tags.push({
-            id: `e${element?.pessoa_objeto_id}-${item}`,
-            source: `${element?.pessoa_objeto_id}`,
-            target: `${item}`,
-            type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
-            animated: false,
-            isHidden: false,
-          });
-        });
-      }
+      // if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+      //   element?.objeto_idsuperior.forEach((item) => {
+      //     tags.push({
+      //       id: `e${element?.pessoa_objeto_id}-${item}`,
+      //       source: `${element?.pessoa_objeto_id}`,
+      //       target: `${item}`,
+      //       type: "straight",
+      //       style: { stroke: "#a9b7b7", strokeWidth: "5" },
+      //       animated: false,
+      //       isHidden: false,
+      //     });
+      //   });
+      // }
       return;
     }
     if (element?.nivel_ordem === 4) {
@@ -316,19 +313,19 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
-          tags.push({
-            id: `e${element?.pessoa_objeto_id}-${item}`,
-            source: `${element?.pessoa_objeto_id}`,
-            target: `${item}`,
-            type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
-            animated: false,
-            isHidden: false,
-          });
-        });
-      }
+      // if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+      //   element?.objeto_idsuperior.forEach((item) => {
+      //     tags.push({
+      //       id: `e${element?.pessoa_objeto_id}-${item}`,
+      //       source: `${element?.pessoa_objeto_id}`,
+      //       target: `${item}`,
+      //       type: "straight",
+      //       style: { stroke: "#a9b7b7", strokeWidth: "5" },
+      //       animated: false,
+      //       isHidden: false,
+      //     });
+      //   });
+      // }
       return;
     }
     if (element?.nivel_ordem === 5) {
@@ -442,7 +439,7 @@ export function BuildCircles({
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
       if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
+        element?.objeto_idsuperior.forEach((item) => {
           tags.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
@@ -570,6 +567,6 @@ export function BuildCircles({
       });
     }
   });
-
+  console.log("tags", tags);
   return tags;
 }

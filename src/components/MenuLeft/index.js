@@ -21,9 +21,11 @@ const MenuLeft = () => {
   } = useCirclesContext();
 
   const [niveis, setNiveis] = useState();
+
   const getLevel = () => {
+    console.log("get level");
     axios
-      .get("http://177.84.146.212:9999/level")
+      .get("http://10.10.30.44:999/level")
       .then((res) => {
         setNiveis(res.data);
       })
@@ -34,7 +36,7 @@ const MenuLeft = () => {
 
   async function filterByNivel(nivel) {
     const nivelFilter = content?.filter((item) => item.nivel_ordem <= nivel);
-
+    console.log("filter by nivel");
     await setElements(
       BuildCircles({
         data: nivelFilter,
