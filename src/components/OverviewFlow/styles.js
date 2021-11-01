@@ -135,6 +135,12 @@ export const ButtonContainer = styled.div`
     position: relative;
     left: -50px;
   }
+  .misison-button{
+  position: absolute;
+   left: 650px;
+   top:-250px;
+
+  }
 
   button {
     width: 50px;

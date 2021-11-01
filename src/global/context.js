@@ -14,20 +14,15 @@ export const Circles = createContext();
 const ElementsCirclesProvider = ({ children }) => {
   const [elements, setElements] = useState();
   const [originalData, setOriginalData] = useState();
-  const [seeActivity, setSeeActivity] = useState(true);
-  const [seeMission, setSeeMission] = useState(false);
   const [content, setContent] = useState();
 
   const handleRemoveInfos = useCallback(() => {
     setElements((oldValue) => oldValue.filter((item) => item.id !== "modal"));
   }, [setElements]);
 
-  const handleRemoveActivitys = () => {
-    setSeeActivity(!seeActivity);
-  };
-  const handleSeeMission = () => {
-    setSeeMission(!seeMission);
-  };
+  const handleRemoveMission = useCallback(() => {
+    setElements((oldValue) => oldValue.filter((item) => item.id !== "mission"));
+  }, [setElements]);
 
   const handleInfos = async (id, x, y) => {
     try {
@@ -37,6 +32,7 @@ const ElementsCirclesProvider = ({ children }) => {
         data: [
           {
             id: "modal",
+            id_do_pai: id,
             nivel_ordem: "details",
             category: dataInfo[0].nivel_id,
             subordinateTo: [],
@@ -52,6 +48,8 @@ const ElementsCirclesProvider = ({ children }) => {
               celular: dataInfo[0].pessoa_celular,
               data_de_nascimento: dataInfo[0].pessoa_aniversario,
               img: dataInfo[0].pessoa_foto,
+              position_x: x,
+              position_y: y,
             },
             style: {
               background: " none",
@@ -67,12 +65,48 @@ const ElementsCirclesProvider = ({ children }) => {
         ],
         handleInfos,
         handleRemoveInfos,
-        seeActivity,
-        handleRemoveActivitys,
-        handleSeeMission,
-        seeMission,
+        handleRemoveMission,
+        handleMission,
       });
       setElements((oldValue) => [...oldValue, ...details]);
+    } catch (error) {}
+  };
+
+  const handleMission = async (id, x, y) => {
+    console.log("x", x);
+    try {
+      const { data: dataInfo } = await api.get(`objectdetail/${id}`);
+
+      const mission = BuildCircles({
+        data: [
+          {
+            id: "mission",
+            nivel_ordem: "mission",
+            category: dataInfo[0].nivel_id,
+            subordinateTo: [],
+            subordinates: [],
+            data: {
+              name: dataInfo[0].pessoa_nome,
+              category: dataInfo[0].nivel_id,
+              area: dataInfo[0].area_descricao,
+            },
+            style: {
+              background: " none",
+              border: "none",
+              boxShadow: "none",
+            },
+            position: {
+              x: x + 380,
+              y: y + 200,
+            },
+            isHidden: false,
+          },
+        ],
+        handleInfos,
+        handleRemoveInfos,
+        handleRemoveMission,
+      });
+      setElements((oldValue) => [...oldValue, ...mission]);
     } catch (error) {}
   };
 
@@ -80,10 +114,8 @@ const ElementsCirclesProvider = ({ children }) => {
     data: originalData,
     handleInfos,
     handleRemoveInfos,
-    seeActivity,
-    handleRemoveActivitys,
-    handleSeeMission,
-    seeMission,
+    handleRemoveMission,
+    handleMission,
   });
 
   useEffect(() => {
@@ -93,13 +125,13 @@ const ElementsCirclesProvider = ({ children }) => {
           data: content,
           handleInfos,
           handleRemoveInfos,
-          seeActivity,
-          handleRemoveActivitys,
+          handleRemoveMission,
+          handleMission,
         })
       );
       setOriginalData(content);
     }
-  }, [content, handleRemoveInfos]);
+  }, [content, handleRemoveInfos, handleRemoveMission]);
 
   const getDataDiagram = async () => {
     const dataApi = await getAllStructure();
@@ -120,8 +152,9 @@ const ElementsCirclesProvider = ({ children }) => {
         setElements,
         setOriginalData,
         handleInfos,
+        handleMission,
         handleRemoveInfos,
-        handleRemoveActivitys,
+        handleRemoveMission,
       }}
     >
       {children}
