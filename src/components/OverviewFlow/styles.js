@@ -73,11 +73,11 @@ export const DataContainer = styled.div`
     margin-top: 20px;
   }
   h1{
-    font-size: 20px;
+    font-size: 16px;
   }
   h2 {
     color: ${(props) => handleColorType(props.color)};
-    font-size: 15px;
+    font-size: 14px;
   }
   div,
   label {
