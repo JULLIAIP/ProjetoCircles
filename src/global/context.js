@@ -29,7 +29,7 @@ const ElementsCirclesProvider = ({ children }) => {
     setSeeMission(!seeMission);
   };
 
-  const handleInfos = async (id) => {
+  const handleInfos = async (id, x, y) => {
     try {
       const { data: dataInfo } = await api.get(`objectdetail/${id}`);
 
@@ -59,8 +59,8 @@ const ElementsCirclesProvider = ({ children }) => {
               boxShadow: "none",
             },
             position: {
-              x: 100,
-              y: -250,
+              x: x + 200,
+              y: y - 220,
             },
             isHidden: false,
           },

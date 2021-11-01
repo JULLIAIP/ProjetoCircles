@@ -54,7 +54,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -112,7 +120,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -181,7 +197,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -252,7 +276,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -321,7 +353,15 @@ export function BuildCircles({
                 <button>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+                <button
+                  onClick={() =>
+                    handleInfos(
+                      element?.pessoa_objeto_id,
+                      element?.ponto_x,
+                      element.ponto_y
+                    )
+                  }
+                >
                   <FontAwesomeIcon icon={faInfo} />
                 </button>
               </div>
@@ -364,7 +404,15 @@ export function BuildCircles({
           label: (
             <div className="lvl-7">
               <FontAwesomeIcon className="avatar-icon" icon={faUser} />
-              <button onClick={() => handleInfos(element?.pessoa_objeto_id)}>
+              <button
+                onClick={() =>
+                  handleInfos(
+                    element?.pessoa_objeto_id,
+                    element?.ponto_x,
+                    element.ponto_y
+                  )
+                }
+              >
                 <FontAwesomeIcon icon={faInfo} />
               </button>
 
