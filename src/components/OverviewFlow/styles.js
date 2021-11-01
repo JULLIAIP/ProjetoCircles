@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import scrollbar from "./scrollbar";
 
 const handleColorType = (color) => {
   switch (color) {
@@ -66,13 +67,14 @@ export const DataContainer = styled.div`
   z-index: 3;
   line-height: 0;
   p {
+    ${scrollbar};
     line-height: 1;
     text-align: justify;
     overflow: auto;
     max-height: 100px;
     margin-top: 20px;
   }
-  h1{
+  h1 {
     font-size: 16px;
   }
   h2 {
