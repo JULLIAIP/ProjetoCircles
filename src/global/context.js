@@ -105,8 +105,8 @@ const ElementsCirclesProvider = ({ children }) => {
               position: 'absolute',
             },
             position: {
-              x: x -40,
-              y: y - 290,
+              x: x -190,
+              y: y - 400,
             },
             isHidden: false,
           },
