@@ -11,6 +11,8 @@ import ReactFlow, {
 import { BuildCircles } from "./renderItems";
 import { uuid } from "uuidv4";
 import { useCirclesContext } from "../../global/context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const OverviewFlow = () => {
   const {
@@ -147,7 +149,7 @@ const OverviewFlow = () => {
   };
 
   useEffect(() => {
-    console.log("index geral")
+    console.log("index geral");
     return () => {
       timerRef.current && clearTimeout(timerRef.current);
     };
@@ -161,8 +163,11 @@ const OverviewFlow = () => {
       onConnect={onConnect}
       onLoad={onLoad}
       snapToGrid={true}
-      snapGrid={[15, 15]}
+      snapGrid={[150, 15]}
       ref={itemRef}
+      minZoom={0.1}
+      defaultZoom={0.1}
+      defaultPosition={[500, 350]}
     >
       <MiniMap
         nodeStrokeColor={(n) => {
@@ -181,6 +186,7 @@ const OverviewFlow = () => {
         nodeBorderRadius={2}
       />
       <Controls />
+
       <Background variant="dots" gap={26} size={1} style={{ opacity: "50%" }} />
     </ReactFlow>
   );
