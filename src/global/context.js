@@ -17,12 +17,13 @@ const ElementsCirclesProvider = ({ children }) => {
   const [content, setContent] = useState();
 
   const handleRemoveInfos = useCallback(() => {
-    setElements((oldValue) => oldValue.filter((item) => item.id !== "modal", content));
-    window.location.reload()
+    setElements((oldValue) =>
+      oldValue.filter((item) => item.id !== "modal", content)
+    );
+    window.location.reload();
   }, []);
 
   const handleRemoveMission = useCallback(() => {
-    console.log("remove mission");
     setElements((oldValue) => oldValue.filter((item) => item.id !== "mission"));
   }, []);
 
