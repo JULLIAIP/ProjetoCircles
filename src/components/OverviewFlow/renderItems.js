@@ -23,6 +23,7 @@ import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export function BuildCircles({
   data: content,
+  elements,
   handleInfos,
   handleRemoveInfos,
   handleMission,
@@ -159,19 +160,22 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
-        element?.objeto_idsuperior.forEach((item) => {
-          tags.push({
-            id: `e${element?.pessoa_objeto_id}-${item}`,
-            source: `${element?.pessoa_objeto_id}`,
-            target: `${item}`,
-            type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5" },
-            animated: false,
-            isHidden: false,
+      // const items = elements.forEach((item) => item.pessoa_objeto_id);
+      // if (items.includes(element.pessoa_objeto_id)) {
+        if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+          element?.objeto_idsuperior.forEach((item) => {
+            tags.push({
+              id: `e${element?.pessoa_objeto_id}-${item}`,
+              source: `${element?.pessoa_objeto_id}`,
+              target: `${item}`,
+              type: "straight",
+              style: { stroke: "#a9b7b7", strokeWidth: "5" },
+              animated: false,
+              isHidden: false,
+            });
           });
-        });
-      }
+        }
+
       return;
     }
     if (element?.nivel_ordem === 3) {
