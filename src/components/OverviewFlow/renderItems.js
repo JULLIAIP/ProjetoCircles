@@ -547,14 +547,12 @@ export function BuildCircles({
             <div>
               <WrapperMission>
                 <DataContainer color={element.category}>
-                  <div>
-                    <h1>{element.data.name}</h1>
-                    <button>
-                      <FontAwesomeIcon icon={faLinkedinIn} className="in" />
-                    </button>
+                  <div className="title-mission">
+                    <h1 className="function">{element.data.descricao}</h1>
                   </div>
-                  <h2 color={element.category}>{element.data.function}</h2>
-                  <p>{element.data.descricao}</p>
+                  <div className="text-mission">
+                    <span>{element.data.texto}</span>
+                  </div>
                 </DataContainer>
               </WrapperMission>
               <ButtonContainer color={element?.category}>

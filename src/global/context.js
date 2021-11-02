@@ -19,7 +19,6 @@ const ElementsCirclesProvider = ({ children }) => {
 
   const handleRemoveInfos = useCallback(() => {
     setElements((oldValue) => oldValue.filter((item) => item.id !== "modal"));
-    console.log("remove info");
   }, []);
 
   const handleRemoveMission = useCallback(() => {
@@ -60,8 +59,8 @@ const ElementsCirclesProvider = ({ children }) => {
               background: " none",
               border: "none",
               boxShadow: "none",
-              zIndex:'200',
-              position: 'absolute',
+              zIndex: "200",
+              position: "absolute",
             },
             position: {
               x: x - 30,
@@ -93,19 +92,19 @@ const ElementsCirclesProvider = ({ children }) => {
             subordinateTo: [],
             subordinates: [],
             data: {
-              name: dataInfo[0].pessoa_nome,
+              descricao: dataInfo[0].objeto_detalhe.descricao,
               category: dataInfo[0].nivel_id,
-              area: dataInfo[0].area_descricao,
+              texto: dataInfo[0].objeto_detalhe.texto,
             },
             style: {
               background: " none",
               border: "none",
               boxShadow: "none",
-              zIndex:'200',
-              position: 'absolute',
+              zIndex: "200",
+              position: "absolute",
             },
             position: {
-              x: x -190,
+              x: x - 190,
               y: y - 400,
             },
             isHidden: false,
@@ -146,27 +145,27 @@ const ElementsCirclesProvider = ({ children }) => {
     //tratar if aqui
     const dataApi = await getAllStructure();
     const getLinks = [];
-    dataApi.forEach((element) => {
-      if (
-        element?.objeto_idsuperior &&
-        element?.nivel_ordem !== 5 &&
-        element?.nivel_ordem !== 6
-      ) {
-        element?.objeto_idsuperior.forEach((item) => {
-          getLinks.push({
-            id: `e${element?.pessoa_objeto_id}-${item}`,
-            source: `${element?.pessoa_objeto_id}`,
-            target: `${item}`,
-            type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
-            animated: false,
-            isHidden: false,
-          });
-        });
-      }
-    });
+    // dataApi.forEach((element) => {
+    //   if (
+    //     element?.objeto_idsuperior &&
+    //     element?.nivel_ordem !== 5 &&
+    //     element?.nivel_ordem !== 6
+    //   ) {
+    //     element?.objeto_idsuperior.forEach((item) => {
+    //       getLinks.push({
+    //         id: `e${element?.pessoa_objeto_id}-${item}`,
+    //         source: `${element?.pessoa_objeto_id}`,
+    //         target: `${item}`,
+    //         type: "straight",
+    //         style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
+    //         animated: false,
+    //         isHidden: false,
+    //       });
+    //     });
+    //   }
+    // });
     console.log("getLinks", getLinks);
-    setContent([...dataApi, ...getLinks]); //[...dataApi, ...getLinks]
+    setContent(dataApi); //[...dataApi, ...getLinks]
   };
 
   useEffect(() => {
