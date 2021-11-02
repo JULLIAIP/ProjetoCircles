@@ -32,8 +32,8 @@ export const WrapperFlowSection = styled.div`
         align-items: center;
         color: white;
         border-radius: 50%;
-        width: 19px;
-        height: 19px;
+        width: 22px;
+        height: 22px;
         border: none;
         cursor: pointer;
         &:hover {

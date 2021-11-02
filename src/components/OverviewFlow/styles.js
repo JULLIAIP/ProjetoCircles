@@ -90,7 +90,24 @@ export const DataContainer = styled.div`
   padding-left: 100px;
   z-index: 3;
   line-height: 0;
-  max-width: 70%;
+  width: 70%;
+  .function {
+    color: ${(props) => handleColorType(props.color)};
+  }
+  .text-mission {
+    span {
+      ${scrollbar};
+      text-align: justify;
+      padding: 4%;
+      overflow: auto;
+      max-height: 350px;
+      line-height: 25px;
+      font-size: 20px;
+    }
+  }
+  .title-mission {
+    margin: 20px;
+  }
 
   p {
     ${scrollbar};
@@ -99,6 +116,7 @@ export const DataContainer = styled.div`
     overflow: auto;
     max-height: 100px;
     margin-top: 20px;
+    min-height: 20px;
   }
   h1 {
     font-size: 16px;

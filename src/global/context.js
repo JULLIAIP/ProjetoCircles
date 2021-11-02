@@ -93,9 +93,9 @@ const ElementsCirclesProvider = ({ children }) => {
             subordinateTo: [],
             subordinates: [],
             data: {
-              name: dataInfo[0].pessoa_nome,
+              descricao: dataInfo[0].objeto_detalhe.descricao,
               category: dataInfo[0].nivel_id,
-              area: dataInfo[0].area_descricao,
+              texto: dataInfo[0].objeto_detalhe.texto,
             },
             style: {
               background: " none",
