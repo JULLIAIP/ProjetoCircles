@@ -58,7 +58,7 @@ export const ImgContainer = styled.div`
     font-size: 120px;
     z-index: 0;
     color: #ffff;
-    opacity: 50%;
+    border-radius: 50%;
   }
 `;
 export const DataContainer = styled.div`
@@ -66,6 +66,7 @@ export const DataContainer = styled.div`
   padding-left: 100px;
   z-index: 3;
   line-height: 0;
+
   p {
     ${scrollbar};
     line-height: 1;
@@ -135,11 +136,10 @@ export const ButtonContainer = styled.div`
     position: relative;
     left: -50px;
   }
-  .misison-button{
-  position: absolute;
-   left: 650px;
-   top:-250px;
-
+  .misison-button {
+    position: absolute;
+    left: 650px;
+    top: -250px;
   }
 
   button {

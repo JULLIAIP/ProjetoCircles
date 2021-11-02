@@ -23,7 +23,7 @@ import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export function BuildCircles({
   data: content,
-  elements, 
+  elements,
   handleInfos,
   handleRemoveInfos,
   handleMission,
@@ -162,19 +162,19 @@ export function BuildCircles({
       });
       // const items = elements.forEach((item) => item.pessoa_objeto_id);
       // if (items.includes(element.pessoa_objeto_id)) {
-        if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
-          element?.objeto_idsuperior.forEach((item) => {
-            tags.push({
-              id: `e${element?.pessoa_objeto_id}-${item}`,
-              source: `${element?.pessoa_objeto_id}`,
-              target: `${item}`,
-              type: "straight",
-              style: { stroke: "#a9b7b7", strokeWidth: "5" },
-              animated: false,
-              isHidden: false,
-            });
+      if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+        element?.objeto_idsuperior.forEach((item) => {
+          tags.push({
+            id: `e${element?.pessoa_objeto_id}-${item}`,
+            source: `${element?.pessoa_objeto_id}`,
+            target: `${item}`,
+            type: "straight",
+            style: { stroke: "#a9b7b7", strokeWidth: "5" },
+            animated: false,
+            isHidden: false,
           });
-        }
+        });
+      }
 
       return;
     }
@@ -465,11 +465,10 @@ export function BuildCircles({
           label: (
             <div>
               <ImgContainer color={element.category}>
-                {element.img ? (
-                  <img src={element.data.img} />
-                ) : (
-                  <FontAwesomeIcon icon={faUser} />
-                )}
+                <img
+                  src={`data:image/png;base64,${element.data.img}`}
+                  alt="foto-perfil"
+                />
               </ImgContainer>
               <WrapperPopover>
                 <DataContainer color={element.category}>
