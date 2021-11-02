@@ -16,6 +16,7 @@ import {
   ImgContainer,
   WrapperPopover,
   ButtonActividades,
+  WrapperMission,
 } from "./styles";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
@@ -467,7 +468,7 @@ export function BuildCircles({
               <ImgContainer color={element.category}>
                 <img
                   src={`data:image/png;base64,${element.data.img}`}
-                  alt="foto-perfil"
+                  alt="foto nao registrada no banco"
                 />
               </ImgContainer>
               <WrapperPopover>
@@ -544,7 +545,7 @@ export function BuildCircles({
         data: {
           label: (
             <div>
-              <WrapperPopover>
+              <WrapperMission>
                 <DataContainer color={element.category}>
                   <div>
                     <h1>{element.data.name}</h1>
@@ -555,7 +556,7 @@ export function BuildCircles({
                   <h2 color={element.category}>{element.data.function}</h2>
                   <p>{element.data.descricao}</p>
                 </DataContainer>
-              </WrapperPopover>
+              </WrapperMission>
               <ButtonContainer color={element?.category}>
                 <button
                   className="misison-button"
