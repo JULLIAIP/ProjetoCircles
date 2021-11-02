@@ -35,11 +35,14 @@ const MenuLeft = () => {
   };
 
   async function filterByNivel(nivel) {
-    const nivelFilter = content?.filter((item) => item.nivel_ordem <= nivel);
-    console.log("filter by nivel");
+    const nivelFilter = originalData.filter(
+      (item) => item.nivel_ordem <= nivel
+    );
+    const getLinks = originalData.filter((item) => item?.source);
+    console.log("original data", originalData);
     await setElements(
       BuildCircles({
-        data: nivelFilter,
+        data: [...nivelFilter, ...getLinks],
         handleInfos,
         handleRemoveInfos,
       })

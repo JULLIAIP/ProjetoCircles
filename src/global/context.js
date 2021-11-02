@@ -15,7 +15,7 @@ const ElementsCirclesProvider = ({ children }) => {
   const [elements, setElements] = useState();
   const [originalData, setOriginalData] = useState();
   const [content, setContent] = useState();
-  console.log("content", content)
+  console.log("content", content);
 
   const handleRemoveInfos = useCallback(() => {
     setElements((oldValue) => oldValue.filter((item) => item.id !== "modal"));
@@ -141,21 +141,25 @@ const ElementsCirclesProvider = ({ children }) => {
     const dataApi = await getAllStructure();
     const getLinks = [];
     dataApi.forEach((element) => {
-      if (element?.objeto_idsuperior && element?.nivel_ordem !== 5) {
+      if (
+        element?.objeto_idsuperior &&
+        element?.nivel_ordem !== 5 &&
+        element?.nivel_ordem !== 6
+      ) {
         element?.objeto_idsuperior.forEach((item) => {
           getLinks.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
             target: `${item}`,
             type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5" },
+            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
             animated: false,
             isHidden: false,
           });
         });
       }
     });
-    console.log("getLinks", getLinks)
+    console.log("getLinks", getLinks);
     setContent([...dataApi, ...getLinks]); //[...dataApi, ...getLinks]
   };
 
