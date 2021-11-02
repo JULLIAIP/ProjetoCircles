@@ -23,7 +23,7 @@ import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export function BuildCircles({
   data: content,
-  elements,
+  elements, 
   handleInfos,
   handleRemoveInfos,
   handleMission,
@@ -407,6 +407,7 @@ export function BuildCircles({
               <button
                 onClick={() =>
                   handleInfos(
+                    //slice do findindex
                     element?.pessoa_objeto_id,
                     element?.ponto_x,
                     element.ponto_y
@@ -458,7 +459,7 @@ export function BuildCircles({
       return;
     }
     if (element?.nivel_ordem === "details") {
-      tags.push({
+      tags.unshift({
         id: element?.id,
         data: {
           label: (
@@ -539,7 +540,7 @@ export function BuildCircles({
       return;
     }
     if (element?.nivel_ordem === "mission") {
-      tags.push({
+      tags.unshift({
         id: element?.id,
         data: {
           label: (

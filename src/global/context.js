@@ -28,6 +28,8 @@ const ElementsCirclesProvider = ({ children }) => {
   }, []);
 
   const handleInfos = useCallback(async (id, x, y) => {
+    // const find = content?.findIndex((item) => item.pessoa_objeto_id === id);
+    // console.log("findindex", find)
     try {
       const { data: dataInfo } = await api.get(`objectdetail/${id}`);
       console.log("seta info");
@@ -58,6 +60,8 @@ const ElementsCirclesProvider = ({ children }) => {
               background: " none",
               border: "none",
               boxShadow: "none",
+              zIndex:'200',
+              position: 'absolute',
             },
             position: {
               x: x - 30,
@@ -71,7 +75,7 @@ const ElementsCirclesProvider = ({ children }) => {
         handleRemoveMission,
         handleMission,
       });
-      setElements((oldValue) => [...oldValue, ...details]);
+      setElements((oldValue) => [...details, ...oldValue]);
     } catch (error) {}
   }, []);
 
@@ -97,6 +101,8 @@ const ElementsCirclesProvider = ({ children }) => {
               background: " none",
               border: "none",
               boxShadow: "none",
+              zIndex:'200',
+              position: 'absolute',
             },
             position: {
               x: x - 30,
