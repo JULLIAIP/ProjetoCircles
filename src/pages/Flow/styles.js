@@ -50,6 +50,7 @@ export const WrapperFlowSection = styled.div`
       display: flex;
       flex-direction: column;
       text-transform: capitalize;
+      max-width: 80%;
 
       .user-pessoa_descricaolonga {
         font-weight: 700;
