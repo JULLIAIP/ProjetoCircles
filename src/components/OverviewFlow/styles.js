@@ -41,8 +41,8 @@ export const WrapperMission = styled.button`
   align-items: center;
   border: none;
   border-radius: 50%;
-  width: 650px;
-  height: 650px;
+  width: 800px;
+  height: 800px;
   padding: 5%;
   margin-left: 150px;
   z-index: 20;
@@ -85,10 +85,12 @@ export const ImgContainer = styled.div`
   }
 `;
 export const DataContainer = styled.div`
+  position: relative;
   text-align: start;
   padding-left: 100px;
   z-index: 3;
   line-height: 0;
+  max-width: 70%;
 
   p {
     ${scrollbar};
@@ -161,8 +163,8 @@ export const ButtonContainer = styled.div`
   }
   .misison-button {
     position: absolute;
-    left: 680px;
-    top: -400px;
+    left: 850px;
+    top: -450px;
   }
 
   button {
@@ -181,7 +183,7 @@ export const ButtonActividades = styled.div`
   flex-direction: column;
   width: 300px;
   top: -380px;
-  left: 650px;
+  left: 630px;
   button {
     opacity: 80%;
     left: 60px;
