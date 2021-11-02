@@ -36,6 +36,25 @@ export const WrapperPopover = styled.button`
     box-shadow: none;
   }
 `;
+export const WrapperMission = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  width: 650px;
+  height: 650px;
+  padding: 5%;
+  margin-left: 150px;
+  z-index: 20;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #696969;
+  background-color: #ffffff;
+  box-shadow: 1px 5px 5px 1px gray;
+  .react-flow__node-default.selected {
+    border: none;
+    box-shadow: none;
+  }
+`;
 export const ImgContainer = styled.div`
   position: absolute;
   left: 10px;
@@ -46,19 +65,23 @@ export const ImgContainer = styled.div`
   height: 150px;
   background-color: #696969;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 0;
   svg {
     font-size: 100px;
     margin-top: 20px;
   }
 
   img {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 100%;
     font-size: 120px;
     z-index: 0;
     color: #ffff;
-    opacity: 50%;
+    border-radius: 50%;
+    font-size: 20px;
+    align-items: center;
   }
 `;
 export const DataContainer = styled.div`
@@ -66,6 +89,7 @@ export const DataContainer = styled.div`
   padding-left: 100px;
   z-index: 3;
   line-height: 0;
+
   p {
     ${scrollbar};
     line-height: 1;
@@ -135,11 +159,10 @@ export const ButtonContainer = styled.div`
     position: relative;
     left: -50px;
   }
-  .misison-button{
-  position: absolute;
-   left: 650px;
-   top:-250px;
-
+  .misison-button {
+    position: absolute;
+    left: 680px;
+    top: -400px;
   }
 
   button {

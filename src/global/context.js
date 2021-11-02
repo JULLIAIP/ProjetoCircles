@@ -15,19 +15,24 @@ const ElementsCirclesProvider = ({ children }) => {
   const [elements, setElements] = useState();
   const [originalData, setOriginalData] = useState();
   const [content, setContent] = useState();
+  console.log("content", content);
 
   const handleRemoveInfos = useCallback(() => {
     setElements((oldValue) => oldValue.filter((item) => item.id !== "modal"));
-  }, [setElements]);
+    console.log("remove info");
+  }, []);
 
   const handleRemoveMission = useCallback(() => {
+    console.log("remove mission");
     setElements((oldValue) => oldValue.filter((item) => item.id !== "mission"));
-  }, [setElements]);
+  }, []);
 
-  const handleInfos = async (id, x, y) => {
+  const handleInfos = useCallback(async (id, x, y) => {
+    // const find = content?.findIndex((item) => item.pessoa_objeto_id === id);
+    // console.log("findindex", find)
     try {
       const { data: dataInfo } = await api.get(`objectdetail/${id}`);
-
+      console.log("seta info");
       const details = BuildCircles({
         data: [
           {
@@ -55,10 +60,12 @@ const ElementsCirclesProvider = ({ children }) => {
               background: " none",
               border: "none",
               boxShadow: "none",
+              zIndex:'200',
+              position: 'absolute',
             },
             position: {
-              x: x + 200,
-              y: y - 220,
+              x: x - 30,
+              y: y - 230,
             },
             isHidden: false,
           },
@@ -68,13 +75,13 @@ const ElementsCirclesProvider = ({ children }) => {
         handleRemoveMission,
         handleMission,
       });
-      setElements((oldValue) => [...oldValue, ...details]);
+      setElements((oldValue) => [...details, ...oldValue]);
     } catch (error) {}
-  };
+  }, []);
 
   const handleMission = async (id, x, y) => {
-    console.log("x", x);
     try {
+      console.log("seta mission");
       const { data: dataInfo } = await api.get(`objectdetail/${id}`);
 
       const mission = BuildCircles({
@@ -94,10 +101,12 @@ const ElementsCirclesProvider = ({ children }) => {
               background: " none",
               border: "none",
               boxShadow: "none",
+              zIndex:'200',
+              position: 'absolute',
             },
             position: {
-              x: x + 380,
-              y: y + 200,
+              x: x -40,
+              y: y - 290,
             },
             isHidden: false,
           },
@@ -131,11 +140,33 @@ const ElementsCirclesProvider = ({ children }) => {
       );
       setOriginalData(content);
     }
-  }, [content, handleRemoveInfos, handleRemoveMission]);
+  }, [content]);
 
   const getDataDiagram = async () => {
+    //tratar if aqui
     const dataApi = await getAllStructure();
-    setContent(dataApi);
+    const getLinks = [];
+    dataApi.forEach((element) => {
+      if (
+        element?.objeto_idsuperior &&
+        element?.nivel_ordem !== 5 &&
+        element?.nivel_ordem !== 6
+      ) {
+        element?.objeto_idsuperior.forEach((item) => {
+          getLinks.push({
+            id: `e${element?.pessoa_objeto_id}-${item}`,
+            source: `${element?.pessoa_objeto_id}`,
+            target: `${item}`,
+            type: "straight",
+            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
+            animated: false,
+            isHidden: false,
+          });
+        });
+      }
+    });
+    console.log("getLinks", getLinks);
+    setContent([...dataApi, ...getLinks]); //[...dataApi, ...getLinks]
   };
 
   useEffect(() => {

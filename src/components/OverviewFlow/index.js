@@ -147,6 +147,7 @@ const OverviewFlow = () => {
   };
 
   useEffect(() => {
+    console.log("index geral")
     return () => {
       timerRef.current && clearTimeout(timerRef.current);
     };

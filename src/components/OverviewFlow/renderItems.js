@@ -16,6 +16,7 @@ import {
   ImgContainer,
   WrapperPopover,
   ButtonActividades,
+  WrapperMission,
 } from "./styles";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
@@ -23,13 +24,13 @@ import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export function BuildCircles({
   data: content,
+  elements,
   handleInfos,
   handleRemoveInfos,
   handleMission,
   handleRemoveMission,
 }) {
   const tags = [];
-  console.log("elements", content);
 
   content?.forEach((element) => {
     if (element?.nivel_ordem === 1) {
@@ -160,8 +161,10 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
+      // const items = elements.forEach((item) => item.pessoa_objeto_id);
+      // if (items.includes(element.pessoa_objeto_id)) {
+      if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+        element?.objeto_idsuperior.forEach((item) => {
           tags.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
@@ -173,6 +176,7 @@ export function BuildCircles({
           });
         });
       }
+
       return;
     }
     if (element?.nivel_ordem === 3) {
@@ -237,16 +241,14 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
-          // exist &&
-          //   exist.includes(item) &&
+      if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+        element?.objeto_idsuperior.forEach((item) => {
           tags.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
             target: `${item}`,
             type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
+            style: { stroke: "#a9b7b7", strokeWidth: "5" },
             animated: false,
             isHidden: false,
           });
@@ -316,14 +318,14 @@ export function BuildCircles({
         },
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
-      if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
+      if (element?.objeto_idsuperior && element?.objeto_idsuperior?.length) {
+        element?.objeto_idsuperior.forEach((item) => {
           tags.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
             target: `${item}`,
             type: "straight",
-            style: { stroke: "#a9b7b7", strokeWidth: "5", opacity: "1" },
+            style: { stroke: "#a9b7b7", strokeWidth: "5" },
             animated: false,
             isHidden: false,
           });
@@ -406,6 +408,7 @@ export function BuildCircles({
               <button
                 onClick={() =>
                   handleInfos(
+                    //slice do findindex
                     element?.pessoa_objeto_id,
                     element?.ponto_x,
                     element.ponto_y
@@ -442,7 +445,7 @@ export function BuildCircles({
         position: { x: element?.ponto_x, y: element?.ponto_y },
       });
       if (element?.objeto_idsuperior) {
-        element?.objeto_idsuperior.map((item) => {
+        element?.objeto_idsuperior.forEach((item) => {
           tags.push({
             id: `e${element?.pessoa_objeto_id}-${item}`,
             source: `${element?.pessoa_objeto_id}`,
@@ -457,17 +460,16 @@ export function BuildCircles({
       return;
     }
     if (element?.nivel_ordem === "details") {
-      tags.push({
+      tags.unshift({
         id: element?.id,
         data: {
           label: (
             <div>
               <ImgContainer color={element.category}>
-                {element.img ? (
-                  <img src={element.data.img} />
-                ) : (
-                  <FontAwesomeIcon icon={faUser} />
-                )}
+                <img
+                  src={`data:image/png;base64,${element.data.img}`}
+                  alt="foto nao registrada no banco"
+                />
               </ImgContainer>
               <WrapperPopover>
                 <DataContainer color={element.category}>
@@ -535,14 +537,15 @@ export function BuildCircles({
         style: element?.style,
         position: { x: element?.position?.x, y: element?.position?.y },
       });
+      return;
     }
     if (element?.nivel_ordem === "mission") {
-      tags.push({
+      tags.unshift({
         id: element?.id,
         data: {
           label: (
             <div>
-              <WrapperPopover>
+              <WrapperMission>
                 <DataContainer color={element.category}>
                   <div>
                     <h1>{element.data.name}</h1>
@@ -553,7 +556,7 @@ export function BuildCircles({
                   <h2 color={element.category}>{element.data.function}</h2>
                   <p>{element.data.descricao}</p>
                 </DataContainer>
-              </WrapperPopover>
+              </WrapperMission>
               <ButtonContainer color={element?.category}>
                 <button
                   className="misison-button"
@@ -568,8 +571,12 @@ export function BuildCircles({
         style: element?.style,
         position: { x: element?.position?.x, y: element?.position?.y },
       });
+      return;
+    }
+    if (element?.source) {
+      tags.push(element);
     }
   });
-
+  console.log("tags", tags);
   return tags;
 }
