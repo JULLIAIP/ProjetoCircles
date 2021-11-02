@@ -532,6 +532,7 @@ export function BuildCircles({
         style: element?.style,
         position: { x: element?.position?.x, y: element?.position?.y },
       });
+      return;
     }
     if (element?.nivel_ordem === "mission") {
       tags.push({
@@ -565,6 +566,10 @@ export function BuildCircles({
         style: element?.style,
         position: { x: element?.position?.x, y: element?.position?.y },
       });
+      return;
+    }
+    if (element?.source) {
+      tags.push(element);
     }
   });
   console.log("tags", tags);

@@ -25,7 +25,7 @@ const MenuLeft = () => {
   const getLevel = () => {
     console.log("get level");
     axios
-      .get("http://10.10.30.44:999/level")
+      .get("http://177.84.146.212:9999/level")
       .then((res) => {
         setNiveis(res.data);
       })
