@@ -60,8 +60,8 @@ const ElementsCirclesProvider = ({ children }) => {
               boxShadow: "none",
             },
             position: {
-              x: x + 200,
-              y: y - 220,
+              x: x-30,
+              y: y-230,
             },
             isHidden: false,
           },
@@ -99,8 +99,8 @@ const ElementsCirclesProvider = ({ children }) => {
               boxShadow: "none",
             },
             position: {
-              x: x + 380,
-              y: y + 200,
+              x: x ,
+              y: y ,
             },
             isHidden: false,
           },
