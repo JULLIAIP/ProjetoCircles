@@ -15,20 +15,19 @@ const ElementsCirclesProvider = ({ children }) => {
   const [elements, setElements] = useState();
   const [originalData, setOriginalData] = useState();
   const [content, setContent] = useState();
-  console.log("content", content);
 
   const handleRemoveInfos = useCallback(() => {
-    setElements((oldValue) => oldValue.filter((item) => item.id !== "modal"));
+    setElements((oldValue) =>
+      oldValue.filter((item) => item.id !== "modal", content)
+    );
+    window.location.reload();
   }, []);
 
   const handleRemoveMission = useCallback(() => {
-    console.log("remove mission");
     setElements((oldValue) => oldValue.filter((item) => item.id !== "mission"));
   }, []);
 
   const handleInfos = useCallback(async (id, x, y) => {
-    // const find = content?.findIndex((item) => item.pessoa_objeto_id === id);
-    // console.log("findindex", find)
     try {
       const { data: dataInfo } = await api.get(`objectdetail/${id}`);
       console.log("seta info");
