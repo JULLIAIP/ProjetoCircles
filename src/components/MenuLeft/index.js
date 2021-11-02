@@ -71,6 +71,7 @@ const MenuLeft = () => {
       })
     );
   }
+  
   useEffect(() => {
     getLevel();
   }, []);
