@@ -2,8 +2,8 @@
 ReactFlow <a href="https://obsequious-line.surge.sh/">https://obsequious-line.surge.sh/</a>
 Projeto utilizando a biblioteca React flow <a href="https://reactflow.dev/">reactflow.dev/</a>
 <hr/>
-Objetivo: A aplicação lê um arquivo JASON e monta dinamicamente, fazendo filtragem por nível, um organograma circular da empresa.
-Funcionalidades: Além de permitir visualizar toda a estrutura organizacional, podemos:
+<strong>Objetivo</strong>: A aplicação lê um arquivo JASON e monta dinamicamente, fazendo filtragem por nível, um organograma circular da empresa.
+<strong>Funcionalidades</strong>: Além de permitir visualizar toda a estrutura organizacional, podemos:
 <li>Buscar por nome/cargo</li>
 <li>Filtrar até certo cargo</li>![React App - Google Chrome_3](https://user-images.githubusercontent.com/81257067/144617083-3784982a-708c-4ba0-8e92-d608e2559c94.jpg)
 <li>Ver os subordinados diretos *onClick*</li>
