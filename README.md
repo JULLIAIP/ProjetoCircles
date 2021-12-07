@@ -1,6 +1,6 @@
-# ProjetoCircles
-ReactFlow <a href="https://obsequious-line.surge.sh/">https://obsequious-line.surge.sh/</a>
-Projeto utilizando a biblioteca React flow <a href="https://reactflow.dev/">reactflow.dev/</a>
+<a href="https://obsequious-line.surge.sh/">ProjetoCircles</a>
+
+Projeto utilizando a biblioteca  <a href="https://reactflow.dev/">React flow/</a>
 <hr/>
 <strong>Objetivo</strong>: A aplicação lê um arquivo JASON e monta dinamicamente, fazendo filtragem por nível, um organograma circular da empresa.
 <strong>Funcionalidades</strong>: Além de permitir visualizar toda a estrutura organizacional, podemos:
